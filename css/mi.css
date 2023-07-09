@@ -1,0 +1,858 @@
+/* 头部顶部导航条 */
+.header{
+    width: 100%;
+    height: 40px;
+    background: #333;
+    font-size: 12px;
+    /* 设置内容垂直位置 */
+    line-height: 40px;
+}
+/* 居中的内容设定 */
+.wrap{
+    /* 设置一个宽度  高度由内容撑开 */
+    width: 1226px;
+    /* auto指的是距离自动适应 */
+    margin: 0 auto;
+    /* background: #0cc;
+    height: 40px; */
+}
+/* 给两个左右导航栏设置浮动 */
+.header-left{
+    float: left;
+}
+.header-right{
+    float: right;
+}
+/* 使用的后代选择器  设置header中的li元素浮动 */
+.header li{
+    /* 只能设置往左浮动，不能设置往右浮动 */
+    float: left;
+    /* 设置相对定位   用来设置下载APP的绝对定位 */
+    position: relative;
+}
+/* 设置字体颜色 */
+.header a{
+    color: #b0b0b0;
+}
+/* 设置鼠标经过超链接时的样式 */
+.header a:hover{/* :hover鼠标经过 */
+    color: #fff;
+}
+.header span{
+    color: #424242;
+    margin: 0 3.6px;
+}
+/* 设置购物车 */
+.cart{
+    width: 120px;
+    height: 40px;
+    background-color: #424242;
+    margin-left: 25px;
+    /* 设置动画过渡 */
+    transition: all .2s;
+    /* 设置相对定位 给购物车下拉来设置绝对定位 */
+    position: relative;
+}
+.cart i{
+    font-size: 20px;
+}
+/* 设置购物车鼠标悬停的样式 */
+.cart:hover{
+    /* 不好用  字体有样式 ，不会继承父元素 没有才会继承 */
+    /* color: #ff6700; */
+    background: #fff;
+}
+/* 单独设置鼠标悬停后代的样式 */
+.cart:hover a{
+    color: #ff6700;
+}
+/* 第一章 头部结束  下边设置下载和购物的下拉框 */
+/* 购物车悬停开始 */
+.cart-list{
+    /* z-index 属性指定一个元素的堆叠顺序 
+    拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素前边*/
+    z-index: 850;
+    /* 绝对定位，相对于已定位的父元素进行定位 */
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 316px;
+    /* height: 100px; */
+    height: 0;/* 设置高度强制为0 */
+    /* 背景颜色如果不设置就透明了 */
+    background: #fff;
+    /* 设置div盒子阴影 水平偏移  垂直偏移  模糊度  阴影颜色 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    color: #424242;
+    /* 设置垂直居中 */
+    /* line-height: 100px; */
+    line-height: 0px;/* 高度为0  行高也为0 */
+    /* 设置默认隐藏，鼠标经过出现 display没有过渡*/
+    /* display: none; */
+    transition: all .3s;
+    /* 因为高度为0  所以设置内容溢出隐藏 */
+    overflow: hidden;
+}
+.cart:hover>.cart-list{
+    /* display: block; */
+    height: 100px;
+    line-height: 100px;
+}
+/* 购物车悬停结束 */
+/* 下载APP悬停开始 */
+.download{
+    z-index: 900;
+    /* 相对于已定位的父元素进行绝对定位 */
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    margin-left: -62px;
+    background: #fff;
+    box-shadow: 0 1px 5px #aaa;
+    width: 124px;
+    /* height: 148px; */
+    height: 0px;
+    overflow: hidden;/* 内容溢出隐藏 */
+    transition: all .3s;
+}
+.download img{
+    width: 90px;
+    margin: 18px auto 12px;/* 上  左右  下 */
+}
+.download p{
+    color: #333;
+    font-size: 14px;
+    /* line-height: 1;当前字体大小 * 1 */
+    line-height: 14px;
+}
+.header-left>li:hover>.download{
+    height: 148px;
+}
+.triangle{
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid #fff;
+    border-left: 8px solid transparent;/* transparent透明 */
+    border-right: 8px solid transparent;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -8px;
+    /* 不需要过渡 */
+    display: none;
+}
+.header-left>li:hover>.triangle{
+    display: block;
+}
+/* 下载APP悬停结束 */
+/* 导航样式开始 */
+.nav{
+    width: 100%;
+    height: 100px;
+    /* background-color: #ff6700; */
+    position: relative;
+}
+.logo{
+    height: 56px;
+    width: 62px;
+    /* background-color: red; */
+    float: left;
+    margin-top: 22px;/* (100-56)/2 */
+    text-align: left;/* 设置logo居左 */
+}
+.search{
+    width: 296px;/* 245+52-1  中间只有一个边框 */
+    height: 50px;
+    /* background-color: pink; */
+    float: left;
+    margin-top: 25px;
+    /* 设置定位  用来给下拉框设置定位 */
+    position: relative;
+}
+.nav-bar{
+    width: 868px;
+    height: 100px;
+    float: left;
+    /* background-color: #ff6700; */
+    /* 怪异盒子模型 规定两个并排的带边框的元素*/
+    box-sizing: border-box;
+    /* 142 + 30 */
+    padding-left: 172px;
+    background-color: #fff;
+}
+.logo img{
+    width: 56px;
+}
+.nav-bar>ul>li{
+    float: left;
+    padding: 38px 10px;
+    /* 设置一下下拉框的长度 */
+    height: 100px;
+    box-sizing: border-box;
+}
+.nav-bar>ul>li>a{
+    color: #333;
+    transition: color .2s;
+}
+.nav-bar>ul>li>a:hover{
+    color: #ff6700;
+}
+.search>input{
+    width: 223px;
+    height: 48px;
+    border: 1px solid #e0e0e0;
+    border-right: none;
+    padding: 0 10px;
+    font-size: 14px;
+    float: left;
+    outline: none;/* 去除外部黑框 */
+    transition: all .2s;
+}
+.search>a{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    font-size: 24px;
+    color: #616161;
+    line-height: 48px;
+    float: left;
+    /* display: inline-block; */
+    transition: all .2s;
+}
+.search>a:hover{
+    color: #fff;
+    background-color: #ff6700;
+    border-color: #ff6700;
+}
+/* 使用群组选择器 以及兄弟选择器应用鼠标经过的样式 */
+.search>input:hover,.search>input:hover+a{
+    border-color: #b0b0b0;
+}
+.search>input:focus,.search>input:focus+a{
+    border-color: #ff6700;
+}
+/* 导航下拉 */
+.nav-bar-list{
+    z-index: 850;
+    width: 100%;
+    height: 229px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #fff;
+    box-shadow: 0 3px 4px rgba(0,0,0,0.18);
+    position: absolute;
+    left: 0;
+    top: 100px;
+    /* background-color: #ff6700; */
+    display: none;
+}
+.nav-bar li:hover>.nav-bar-list{
+    display: block;
+}
+.nav-bar-list li{
+    width: 204px;
+    /* height: 200px; */
+    padding-top: 35px;
+    float: left;
+}
+.img-box{
+    width: 100%;
+    height: 110px;
+    border-right: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+.name1,.price1{
+    font-size: 12px;
+    line-height: 20px;
+}
+.price1{
+    color: #ff6700;
+}
+.nav-bar-list li:last-child .img-box{
+    border-right: none;
+}
+/* 搜索框部分 */
+.search-list{
+    z-index: 850;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 245px;
+    /* 30 * 8 + 1 */
+    height: 241px;
+    border: 1px solid #ff6700;
+    border-top: none;
+    background-color: #fff;
+    box-sizing: border-box;
+    display: none;
+}
+.search>input:focus~.search-list{
+    display: block;
+}
+.search-list>a{
+    width: 243px;
+    height: 30px;
+    padding: 6px 15px;
+    display: block;
+    box-sizing: border-box;
+    text-align: left;
+    color: #424242;
+    font-size: 12px;
+}
+/* 导航样式结束 */
+/* banner开始 */
+.banner{
+    width: 100%;
+    height: 460px;
+    /* background-color: #ff6700; */
+}
+.banner-box{
+    width: 1226px;
+    height: 460px;
+    /* background-color: #ff6700; */
+    background-image: url("../images/628a0172dc664f2740250ed9691b65ee.jpg");
+    background-size: 100%;
+    /* 页面加载动画  名称  持续时间   变换形式(动画从头到位速度是相同的) 无限循环 */
+    animation: banner 8s linear infinite;
+}
+/* 定义轮播动画 */
+@keyframes banner {
+    0%{
+        background-image: url("../images/628a0172dc664f2740250ed9691b65ee.jpg");
+    }
+    33%{
+        background-image: url("../images/008e480893428ae9c9c4452f67a4eec9.jpg");
+    }
+    66%{
+        background-image: url("../images/1b02013e822d8235cad4d8dc1b7ff4b5.jpg");
+    }
+    100%{
+        background-image: url("../images/9c98d55bea67b340c37c23ea59df00b3.jpg");
+    }
+}
+.banner-box:hover{
+    /* 鼠标放上去之后  暂停轮播 */
+    animation-play-state: paused;
+}
+.banner>.wrap{
+    position: relative;
+}
+/* 滑动门 */
+.slide{
+    width: 234px;
+    height: 460px;
+    background-color: rgba(105,101,101,.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+.slide>ul>li{
+    height: 42px;
+    line-height: 42px;
+    text-align: left;
+    padding-left: 30px;
+}
+.slide>ul>li>a{
+    font-size: 14px;
+    color: #fff;
+}
+.slide>ul>li:hover{
+    background-color: #ff6700;
+}
+.slide i{
+    float: right;
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: bolder;
+}
+.slide-list{
+    display: none;
+    width: 992px;
+    height: 456px;
+    border: 1px solid #e0e0e0;
+    border-left: none;
+    box-shadow: 0 8px 16px rgba(0,0,0,.18);
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 234px;
+    padding-top: 2px;
+}
+.slide li:hover>.slide-list{
+    display: block;
+}
+.slide-list>ul{
+    /* 因为每列的个数不一定，所以不能设置百分比宽度，要设置固定宽度 */
+    width: 248px;/* 高度由内容撑开 */
+    float: left;
+}
+.slide-list li{
+    width: 100%;/* 根据父元素ul一样宽 */
+    height: 76px;
+    padding: 18px 0 18px 20px;
+    box-sizing: border-box;
+}
+.slide-list img{
+    margin-right: 12px;
+}
+.slide-list span{
+    line-height: 40px;
+    font-size: 14px;
+    white-space: nowrap;/* 规定段落中的文本不进行换行 */
+    overflow: hidden;
+    text-overflow: ellipsis;/* 显示省略号来代表溢出被修改的文本 */
+}
+.slide-list li:hover span{
+    color: #ff6700;
+}
+/* 少的侧边栏 */
+.slide-list-1{
+    width: 744px;
+}
+/* 左右箭头 */
+.prev,.next{
+    width: 41px;
+    height: 69px;
+    /* background-color: red; */
+    position: absolute;
+    top: 50%;
+    margin-top: -34.5px;
+    background-image: url("../images/icon-slides.png");
+    cursor: pointer;/* 鼠标变小手 */
+}
+.prev{
+    left: 234px;
+    background-position: -83px;/* 雪碧图需要偏移  一个宽度41+中间的1px */
+}
+.next{
+    right: 0;
+    background-position: -125px;
+}
+.prev:hover{
+    background-position: 0;
+}
+.next:hover{
+    background-position: -42px;
+}
+/* banner结束 */
+/* 广告开始 */
+.adv{
+    width: 100%;
+    height: 170px;
+    margin: 14px 0 26px;
+    /* background-color: red; */
+}
+.adv-poster{
+    width: 234px;
+    height: 170px;
+    background-color: #5f5750;
+    float: left;
+}
+.adv-img{
+    width: 316px;
+    height: 170px;
+    /* background-color: yellowgreen; */
+    float: left;
+    /* (1226 - 234 - 316 * 3) / 3 */
+    margin-left: 14.66px;
+    transition: all .2s linear;
+}
+.adv-img img{
+    width: 100%;/* 高度会等比例缩放 */
+}
+.adv-img:hover{
+    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+}
+.adv-poster li{
+    position: relative;
+    float: left;
+    width: 76px;
+    height: 82px;
+    padding: 19px 0;
+    box-sizing: border-box;
+}
+.adv-poster i{
+    font-size: 22px;
+    margin-bottom: 4px;
+
+}
+.adv-poster a{
+    display: block;
+    font-size: 12px;
+    color: #fff;
+    opacity: .7;/* 透明度 */
+    transition: all .2s;
+}
+.adv-poster a:hover{
+    opacity: 1;/* 1不透明 */
+}
+.row::after,.col::before{
+    content: "";
+    background-color:#665e57 ;
+    position: absolute;
+}
+.row::after{
+    width: 64px;
+    height: 1px;
+    bottom: 6px;
+    left: 6px;
+}
+.col::before{
+    width: 1px;
+    height: 64px;
+    right: 0;
+    top: 6px;
+}
+/* 广告结束 */
+/* 主体内容开始 */
+.container{
+    width: 100%; /* 高度由内容撑开 */
+    background-color: #f5f5f5;
+    padding: 4px 0 12px;
+    overflow: hidden;
+}
+.home-banner-box{
+    width: 100%;
+    height: 120px;
+    margin: 22px 0;
+}
+/* 手机样式开始 */
+.title{
+    text-align: left;
+    font-size: 22px;
+    color: #333;
+    font-weight: 200;
+    line-height: 58px;
+}
+.more{
+    float: right;
+    color: #424242;
+    font-size: 16px;
+    transition: all .4s;
+}
+.more i{
+    color: #b0b0b0;
+    /* font-size: 22px; */
+    margin-left: 8px;
+    transition: all .4s;
+}
+.more:hover,.more:hover>i{
+    color: #ff6700;
+}
+.home-box{
+    width: 100%;
+    height: 614px;
+    position: relative;
+    /* background-color: red; */
+}
+.home-box-left{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 234px;
+    height: 614px;
+    float: left;
+    /* background-color: #0cc; */
+}
+.home-box-right{
+    position: absolute;
+    top: 0;
+    left: 234px;
+    width: 992px;
+    height: 614px;
+    float: left;
+    /* background-color: #ff6700; */
+    box-sizing: border-box;
+}
+.home-box-left li{
+    background-color: #fff;
+}
+
+.home-box-right li{
+    width: 234px;
+    height: 300px;
+    margin: 0 0 14px 14px;
+    background-color: #fff;
+    float: left;
+    box-sizing: border-box;
+}
+.home-box-right .home-goods{
+    margin: 20px 0 0 0;
+    padding: 0 37px 18px 37px;
+}
+.home-goods img{
+    width: 160px;
+}
+.name2{
+    margin: 0 10px 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+.info{
+    margin: 0 10px 10px;
+    height: 18px;
+    font-size: 12px;
+    color: #b0b0b0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.price2{
+    font-size: 14px;
+}
+.price-new{
+    color: #ff6700;
+}
+.price-old{
+    color: #b0b0b0;
+    margin-left: 7px;
+}
+.home-box-left li,.home-box-right li{
+    transition: all .2s linear;
+   
+}
+.home-box-left li:hover,.home-box-right li:hover{
+    /* 旋转div元素  3d旋转    xyz */
+    transform: translate3d(0,-2px,0);
+    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+}
+/* 主体内容结束 */
+/* 视频部分开始 */
+.video-box{
+    height: 285px;
+    margin-bottom: 28px;
+}
+.video-box li{
+    width: 296px;
+    height: 285px;
+    background-color: #fff;
+    float: left;
+    margin-right: 14px;
+    box-sizing: border-box;
+    transition: all .2s linear;
+}
+.video-box li:hover{
+    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+    transform: translate3d(0,-2px,0);
+}
+.video-box li:last-child{
+    margin-right: 0;
+}
+.video-box .video-img{
+    height: 208px;
+    position: relative;
+}
+.video-img i{
+    position: absolute;
+    left: 20px;
+    bottom: 38px;
+    font-size: 30px;
+    font-weight: bold;
+    transition: all .2s;
+    color: #fff;
+}
+.video-img:hover i{
+    color: #ff6700;
+}
+.video-box .title1,.video-box .desc{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.video-box .title1{
+    margin: 0 14px 6px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+.video-box .desc{
+    height: 18px;
+    margin: 0 14px;
+    font-size: 12px;
+    color: #b0b0b0;
+}
+/* 视频部分结束 */
+/* 底部链接开始 */
+.footer{
+    width: 100%;
+    height: 472.5px;
+    background-color: #fff;
+}
+.footer-service{
+    width: 100%;
+    height: 79px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.footer-links{
+    width: 100%;
+    height: 392.5;
+}
+.footer-service li{
+    float: left;
+    width: 242.734px;
+    border-right: 1px solid #e0e0e0;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 27px 0;
+}
+.footer-service li a{
+    transition: all .2s;
+    color: #616161;
+}
+.footer-service li:hover a{
+    color: #ff6700;
+}
+.footer-service li i{
+    font-size: 25px;
+}
+.footer-service li:last-child{
+    border-right: 0;
+}
+.footer-links{
+    padding: 40px 0 40px 160px;
+    width: 1066px;
+    height: 312.5px;
+}
+.footer-links dl{
+    text-align: left;
+    width: 160px;
+    float: left;
+}
+.footer-links dt{
+    margin: -1px 0 26px;
+    font-size: 14px;
+    line-height: 1.26;
+    color: #424242;
+}
+.footer-links dd{
+    margin: 10px 0 0;
+    font-size: 12px;
+    color: #333;
+}
+.footer-links dd:hover a{
+    color: #ff6700;
+}
+.footer-call{
+    width: 251px;
+    height: 110px;
+    border-left: 1px solid #e0e0e0;
+    float: right;
+}
+.call-phone{
+    font-size: 22px;
+    line-height: 1;
+    color: #ff6700;
+    margin: 0 0 5px 0;
+    text-align: center;
+}
+.call-time{
+    margin: 0 0 5px 0;
+    font-size: 12px;
+    text-align: center;
+    color: #616161;
+}
+.call-man{
+    width: 120px;
+    height: 30px;
+    border: 1px solid #ff6700;
+    margin: 0 auto;
+    font-size: 12px;
+    line-height:28px;
+    color: #ff6700;
+    transition: all .4s;
+}
+.call-man:hover{
+    color: #fff;
+    background-color: #ff6700;
+}
+.call-download img{
+    width: 20px;
+}
+.call-download{
+    font-size: 12px;
+    color: #616161;
+    text-align: center;
+    margin-top: 10px;
+}
+/* 底部链接结束 */
+/* 底部信息开始 */
+.site-info{
+    width: 100%;
+    height: 266px;
+    padding: 30px 0; 
+    box-sizing: border-box; 
+}
+.site-info>.wrap{
+    position: relative; 
+}
+.site-logo{
+    width: 56px;
+    height: 56px;
+    background-image: url("../images/logo-mi2.png");
+    background-size: 100%;
+    margin-right: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.info-text{
+    width: 1150px;
+    margin-left: 76px;
+    text-align: left;
+}
+.site-link{
+    font-size: 12px;
+    line-height: 18px;
+}
+.site-link>a:hover{
+    color: #ff6700;
+}
+.site-link>a{
+    color: #757575;
+}
+.site-link>span{
+    color: #b0b0b0;
+    padding: 0 1px;
+}
+.site-something{
+    font-size: 12px;
+    line-height: 18px;
+    color: #b0b0b0;
+}
+.safe{
+    margin: 4px 0 45px;
+}
+.safe>img{
+    width: 83.0167px;
+    height: 28px;
+}
+.slogan{
+    width: 100%;
+    height: 19px;
+    background: url("../images/slogan2020.png") no-repeat;
+    background-position: 373px;
+}
+/* 底部信息结束 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+

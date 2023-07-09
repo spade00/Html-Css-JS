@@ -1,0 +1,23 @@
+/* 使用群组选择器选择页面的标签，设置填充和边距 */
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,button,p,th,td{
+    margin: 0;
+    padding: 0;
+}
+body{
+    text-align: center;/* 文字居中 */
+    /* 设置文档安全字体 */
+    font-family: Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;;
+}
+ul,ol,li{
+    /* 设置列表项目的标记样式 */
+    list-style: none;
+}
+a{
+    text-decoration: none;/* 去除超链接下划线 */
+    color: #333;
+}
+input,button,img{
+    border: none;
+    /* 设置元素的垂直对齐方式   middle居中对齐*/
+    vertical-align: middle;
+}
